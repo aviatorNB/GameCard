@@ -4,19 +4,84 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GameCardWpf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" WindowState="Maximized"
+        Title="Game the Witch" Height="450" Width="800">
     <Grid Name="ContentRoot">
-        <!--<DockPanel LastChildFill="True">
-            
- 
-                <Button DockPanel.Dock="Top" Background="AliceBlue" Content="Верхняя кнопка" />
-                <Button DockPanel.Dock="Bottom" Background="BlanchedAlmond" Content="Нижняя кнопка" />
-                <Button DockPanel.Dock="Left" Background="Aquamarine" Content="Левая кнопка" />
-                <Button DockPanel.Dock="Right" Background="DarkGreen" Content="Правая кнопка" />
-            <WrapPanel x:Name="Panel" DockPanel.Dock="Left">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/2560x1440-mint-solid-color-background.jpg"></ImageBrush>
+        </Grid.Background>
+        <DockPanel LastChildFill="True">
+            <Grid DockPanel.Dock="Left" >
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="18"
+                               Grid.Row="1"
+                               FontFamily="pack://application:,,,/Fonts/#Coffee Break"
+                               Margin="10 0">Erica</TextBlock>
+                    <Border CornerRadius="180" Grid.Row="0">
+                        <Border.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="images/erica.jpg"/>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+
+
                 
-            </WrapPanel>
-        </DockPanel>-->
+
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock FontSize="18"
+                               Grid.Row="0"
+                               FontFamily="pack://application:,,,/Fonts/#Coffee Break" Margin="10 0">Vlada</TextBlock>
+                    <Border CornerRadius="180" Grid.Row="1">
+                    <Border.Background>
+                        <ImageBrush Stretch="UniformToFill" ImageSource="images/vlada.png"/>
+                    </Border.Background>
+                </Border>
+                </Grid> 
+
+
+                <StackPanel x:Name="EricaPanel" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+                <StackPanel x:Name="VladaPanel" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1"/>
+
+                <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" FontStyle="Italic" FontSize="15"
+                               FontWeight="Bold">Score</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" x:Name="txbScore"
+                           FontSize="35"    FontFamily="pack://application:,,,/Fonts/#Baisley">
+                            
+                    </TextBlock>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1" x:Name="spMiddle" VerticalAlignment="Center"
+                            Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button  x:Name="btnStart" FontSize="55" Click="DealCards_Click" Width="500"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">START THE GAME</Button>
+                </StackPanel>
+                
+                
+
+            </Grid>
+            
+
+
+        </DockPanel>
     </Grid>
 </Window>

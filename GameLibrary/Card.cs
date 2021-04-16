@@ -29,5 +29,9 @@ namespace GameCard
         /// </summary>
         public FaceValue FaceValue { get; }
 
+        public override string ToString()
+        {
+            return FaceValue.ToString() + Suit;
+        }
     }
 }

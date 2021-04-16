@@ -27,6 +27,23 @@ namespace GameCard
             }
         }
 
+        public string NameHand { get; set; }
+
+        public Hand()
+        {
+            
+        }
+
+        public Hand(string nameHand)
+        {
+            NameHand = nameHand;
+        }
+
+        public Card this[string faceValue, string suit]
+        {
+            get { return cards.FirstOrDefault(d => d.ToString().Equals(faceValue + suit)); }
+        }
+
         public void AddCard(Card newCard)
         {
             // the List<T>.Contains method cannot be used since it only checks if the same reference object exists
@@ -93,7 +110,7 @@ namespace GameCard
         /// </summary>
         /// <param name="cardToCheck"></param>
         /// <returns></returns>
-        private bool ContainsCard(Card cardToCheck)
+        public bool ContainsCard(Card cardToCheck)
         {
             foreach (Card card in cards)
             {
@@ -104,6 +121,59 @@ namespace GameCard
             }
 
             return false;
+        }
+
+        public List<Card> GetCards()
+        {
+            return cards;
+        }
+
+        public bool IsQeenSpades(Card card)
+        {
+            return card.FaceValue == FaceValue.Queen && card.Suit == Suit.Spades;
+        }
+
+
+        public Card GetSameCard(Card card)
+        {
+            foreach (var card1 in cards)
+            {
+                if (card1.FaceValue == card.FaceValue)
+                {
+                    if (card1.Suit == Suit.Spades && card1.FaceValue == FaceValue.Queen)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        return card1;
+                    }
+                }
+            }
+
+            return null;
+            //var find= cards.FirstOrDefault(d => d.FaceValue == card.FaceValue 
+            //                                    && (d.FaceValue != FaceValue.Queen && d.Suit != Suit.Spades) );
+            //var res = find != null && find.FaceValue == FaceValue.Queen && find.Suit == Suit.Spades ? null : find;
+            //return res;
+        }
+
+        public void Shuffle()
+        {
+            Random rGen = new Random();
+            List<Card> newDeck = new List<Card>();
+
+            while (cards.Count > 0)
+            {
+                int removeIndex = rGen.Next(0, (cards.Count));
+                Card removeObject = cards[removeIndex];
+                cards.RemoveAt(removeIndex);
+                //  Add the removed card to the new deck.
+                newDeck.Add(removeObject);
+            }
+
+            //  replace the old deck with the new deck
+            cards = newDeck;
         }
     }
 

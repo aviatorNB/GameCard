@@ -66,7 +66,7 @@ namespace GameCardWpf
             };
             finalImage.MouseLeftButtonUp += FinalImage_MouseLeftButtonUp;
             var uri = $"pack://application:,,,/GameCardWpf;component/images/{facevalue}{suit}.jpg";
-            if (nameHand.Equals("Erica") && !Debugger.IsAttached)
+            if (nameHand.Equals("Erica"))//&& !Debugger.IsAttached
             {
                 uri = $"pack://application:,,,/GameCardWpf;component/images/cardback.gif";
             }
